@@ -15,6 +15,7 @@ body {
 	/*This makes sure that the padding and border are included in the total width and height of the elements.*/
 	box-sizing: border-box;
 	color:#CCCCCC;
+	text-decoration: none;
 	font-family: Andale Mono, AndaleMono, monospace;
 }
 
@@ -49,4 +50,72 @@ body {
 #title {
 	margin: 10px;
 	font-size: 70px;
+	color: black;
+}
+
+#nav li {
+	padding-right: 30px;
+	padding-left: 30px;
+	margin-left: 0px;
+	list-style: none;
+	float:left;
+}
+#nav button {
+	font-size: 28px;
+	background: transparent;
+	border: none;
+	outline: none;
+}
+#nav button:hover {
+	color:#FFFFFF;
+}
+.about_buttons {
+	margin-top: 20px;
+	color: #84a1d8;
+	width: 100%;
+	padding: 0px;
+	font-size: 32px;
+	background: transparent;
+	border: none;
+	outline: none;
+}
+.about_buttons:hover {
+	color:#FFFFFF;
+}
+#about h3 {
+	font-size: 20px;
+}
+
+#about_disp {
+	background: url('img/asdfasdf.png');
+	background-size: 100%;
+	height: 350px;
+	background-repeat: no-repeat;
+}
+#gm_shot {
+	background: url('img/gasdfgadsg.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 400px;
+}
+#history_button {
+	color: #84a1d8;
+	width: 100%;
+	padding: 0px;
+	font-size: 24px;
+	background: transparent;
+	border: none;
+	outline: none;
+}
+#history_button:hover {
+	color:#FFFFFF;
+}
+
+#footer {
+	position: fixed;
+	left:0px;
+    bottom:0px;
+    height:80px;
+    width:100%;
+	background-color: black;
 }
