@@ -17,50 +17,52 @@ File: index.php
 	<script type="text/javascript">
 
 	function setup() {
-		toggle_about();
+		// toggle_about();
 	}
+
+	// function toggle_about() {
+	// 	toggle_('about',['schedule','classes','location','contact_us']);
+	// }
+	// function toggle_schedule() {
+	// 	toggle_('schedule',['about','classes','location','contact_us']);
+	// }
+	// function toggle_classes() {
+	// 	toggle_('classes',['schedule','location','about','contact_us']);
+	// }
+	// function toggle_location() {
+	// 	toggle_('location',['schedule','classes','about','contact_us']);
+	// }
+	// function toggle_contact_us() {
+	// 	toggle_('contact_us',['schedule','classes','location','about']);
+	// }
 	
-	function toggle_about() {
-		var x = document.getElementById('about');
-		if (x.style.display === 'none') {
-			x.style.display = 'block';
-		}
-		var y = [];
-		y.push(document.getElementById('schedule'));
-		y.push(document.getElementById('classes'));
-		y.push(document.getElementById('location'));
-		y.push(document.getElementById('contact_us'));
-		for (var i = 0; i < y.length; i++) {
-			y[i].style.display = 'none';
-		}
-	}
-	function toggle_schedule() {
-		var x = document.getElementById('schedule');
-		if (x.style.display === 'none') {
-			x.style.display = 'block';
-		}
-		var y = [];
-		y.push(document.getElementById('about'));
-		y.push(document.getElementById('classes'));
-		y.push(document.getElementById('location'));
-		y.push(document.getElementById('contact_us'));
-		for (var i = 0; i < y.length; i++) {
-			y[i].style.display = 'none';
-		}
-	}
-	function toggle_location() {
-		var x = document.getElementById('location');
-		if (x.style.display === 'none') {
-			x.style.display = 'block';
-		}
-		var y = [];
-		y.push(document.getElementById('about'));
-		y.push(document.getElementById('classes'));
-		y.push(document.getElementById('schedule'));
-		y.push(document.getElementById('contact_us'));
-		for (var i = 0; i < y.length; i++) {
-			y[i].style.display = 'none';
-		}
+	// function toggle_(target,other) {
+	// 	var x = document.getElementById(target);
+	// 	if (x.style.display === 'none') {
+	// 		x.style.display = 'block';
+	// 		x.style.visibility = 'visible';
+	// 	}
+	// 	var y = [];
+	// 	for (var i = 0; i < other.length; i++) {
+	// 		y.push(document.getElementById(other[i]));
+	// 	}
+	// 	for (var i = 0; i < y.length; i++) {
+	// 		y[i].style.display = 'none';
+	// 		y[i].style.visibility = 'hidden';
+	// 	}
+	// }
+
+	// map API function
+	function initMap() {
+		var bbcl = {lat:34.045176,lng:-118.452099};
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 17,
+			center: bbcl
+		});
+		var marker = new google.maps.Marker({
+			position: bbcl,
+			map: map
+		});
 	}
 
 
@@ -165,11 +167,15 @@ File: index.php
 	<section id="location" name="location">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-4">
-				text
+			<div class="col-2">
+				<br>
+				<h1 style="font-size:28px;">Where We Are</h1>
+				<hr>
+				<h3>11514 Santa Monica Blvd.<br>Los Angeles, CA  90025</h3>
+				<a id="open_in_maps" href="https://www.google.com/maps/place/Los+Angeles+Chess+Club/@34.045182,-118.4520704,19z/data=!4m5!3m4!1s0x0:0x1270b0aa9041b52c!8m2!3d34.0452334!4d-118.4520605?hl=en-US">Open Map</a>
 			</div>
-			<div class="col-4">
-				text
+			<div class="col-6">
+				<div id="map"></div>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -178,11 +184,17 @@ File: index.php
 	<section id="contact_us" name="contact_us">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-4">
-				text
+			<div class="col-3">
+				<center><h1 style="font-size:28px;">Contact Us</h1></center>
+				<h2 style="margin:0;">Founder &amp; Director</h2>
+				<h1 style="margin:0;">Senior Master Mick Bighamian</h1>
+				<hr>
+				<h3 style="margin-left:20px;">email: <a style="color: #84a1d8;" href="mailto:mick@lachessclub.com">mick@lachessclub.com</a><br>cell: 310 795 5710</h3>
 			</div>
+			<div class="col-1"></div>
 			<div class="col-4">
-				text
+				<center><img src="img/DSC_0278.jpg" style="width:80%;margin-top:20px;"></center>
+				<center><p style="width:80%;">Mick Bighamian (left)</p></center>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -192,8 +204,8 @@ File: index.php
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-4">
-				<p style="margin-top: 15px;margin-bottom: 10px;">Copyright &copy; 2017 LACC</p>
-				<p style="margin-top: 8px;">coded by <a style="color:#48a9f9;" href="http://ivarcode.net/">Camden I. Wagner</a></p>
+				<p style="font-size:12px;margin-top: 15px;margin-bottom: 10px;">Copyright &copy; 2017 LACC</p>
+				<p style="font-size:10px;margin-top: 8px;">coded by <a style="color:#48a9f9;" href="http://ivarcode.net/">Camden I. Wagner</a></p>
 			</div>
 			<div class="col-4">
 				
@@ -201,6 +213,10 @@ File: index.php
 			<div class="col-2"></div>
 		</div>
 	</section>
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3HTNHT_q4eKGTPcl_AqxuUMmaTTfyX8&callback=initMap">
+    </script>
 
 </body>
 </html>
