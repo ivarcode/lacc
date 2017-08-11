@@ -9,6 +9,18 @@ File: index.php
 	<!-- Website Title & Description -->
 	<title>LA Chess Club</title>
 	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> 
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="styles.css">
@@ -17,40 +29,84 @@ File: index.php
 	<script type="text/javascript">
 
 	function setup() {
-		// toggle_about();
+		toggle_about();
+		toggle_ssat();
 	}
 
-	// function toggle_about() {
-	// 	toggle_('about',['schedule','classes','location','contact_us']);
-	// }
-	// function toggle_schedule() {
-	// 	toggle_('schedule',['about','classes','location','contact_us']);
-	// }
-	// function toggle_classes() {
-	// 	toggle_('classes',['schedule','location','about','contact_us']);
-	// }
-	// function toggle_location() {
-	// 	toggle_('location',['schedule','classes','about','contact_us']);
-	// }
-	// function toggle_contact_us() {
-	// 	toggle_('contact_us',['schedule','classes','location','about']);
-	// }
+	// main nav toggle
+	function toggle_about() {
+		toggle_('about',['schedule','classes','location','contact_us']);
+	}
+	function toggle_schedule() {
+		toggle_('schedule',['about','classes','location','contact_us']);
+	}
+	function toggle_classes() {
+		toggle_('classes',['schedule','location','about','contact_us']);
+	}
+	function toggle_location() {
+		toggle_('location',['schedule','classes','about','contact_us']);
+	}
+	function toggle_contact_us() {
+		toggle_('contact_us',['schedule','classes','location','about']);
+	}
+
+	// schedule toggle
+	function toggle_ssat() {
+		toggle_s('ssat',['ssun','stue']);
+	}
+	function toggle_ssun() {
+		toggle_s('ssun',['ssat','stue']);
+	}
+	function toggle_stue() {
+		toggle_s('stue',['ssun','ssat']);
+	}
 	
-	// function toggle_(target,other) {
-	// 	var x = document.getElementById(target);
-	// 	if (x.style.display === 'none') {
-	// 		x.style.display = 'block';
-	// 		x.style.visibility = 'visible';
-	// 	}
-	// 	var y = [];
-	// 	for (var i = 0; i < other.length; i++) {
-	// 		y.push(document.getElementById(other[i]));
-	// 	}
-	// 	for (var i = 0; i < y.length; i++) {
-	// 		y[i].style.display = 'none';
-	// 		y[i].style.visibility = 'hidden';
-	// 	}
-	// }
+	function toggle_(target,other) {
+		document.getElementById(target+'_li').style.background = 'rgba(255,255,255,0.25)';
+		let x = document.getElementById(target);
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+			x.style.visibility = 'visible';
+		}
+		let y = [];
+		let z = [];
+		for (let i = 0; i < other.length; i++) {
+			y.push(document.getElementById(other[i]));
+			z.push(document.getElementById(other[i]+'_li'));
+		}
+		// console.log(z);
+		for (let i = 0; i < y.length; i++) {
+			y[i].style.display = 'none';
+			y[i].style.visibility = 'hidden';
+			z[i].style.background = 'none';
+		}
+	}
+
+	function toggle_s(target,other) {
+		document.getElementById(target+'link_a').style.color = 'black';
+		document.getElementById(target+'link').className += ' active';
+		let x = document.getElementById(target);
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+			x.style.visibility = 'visible';
+		}
+		let y = [];
+		let z = [];
+		let zz = [];
+		for (let i = 0; i < other.length; i++) {
+			y.push(document.getElementById(other[i]));
+			z.push(document.getElementById(other[i]+'link'));
+			zz.push(document.getElementById(other[i]+'link_a'));
+		}
+		// console.log(z);
+		// console.log(y);
+		for (let i = 0; i < y.length; i++) {
+			y[i].style.display = 'none';
+			y[i].style.visibility = 'hidden';
+			z[i].className = '';
+			zz[i].style.color = 'white';
+		}
+	}
 
 	// map API function
 	function initMap() {
@@ -73,6 +129,8 @@ File: index.php
 </head>
 <body>
 
+	
+
 	<section id="header" name="header">
 		<div class="row" style="background-color: #EEEEEE;">
 			<div class="col-2"></div>
@@ -89,22 +147,21 @@ File: index.php
 		</div>
 	</section>
 
-	<section id="nav" name="nav">
-		<div class="row" style="background: rgba(0,0,0,0.7);">
-			<div class="col-2"></div>
-			<div class="col-8">
-				<ul style="height:25px;margin-top: 5px;">
-					<li><center><button onclick="toggle_about()">About</button></center></li>
-					<li><center><button onclick="toggle_schedule()">Schedule</button></center></li>
-					<li><center><button onclick="toggle_classes()">Classes</button></center></li>
-					<li><center><button onclick="toggle_location()">Location</button></center></li>
-					<li><center><button onclick="toggle_contact_us()">Contact Us</button></center></li>
+	<div style="width:100%;margin-bottom:15px;" class="row">
+		<div class="col-2 slight-pop"></div>
+		<div class="col-8">
+			<nav>
+				<ul class="nav nav-tabs nav-justified">
+					<li id="about_li"><center><button onclick="toggle_about()">About</button></center></li>
+					<li id="schedule_li"><center><button onclick="toggle_schedule()">Schedule</button></center></li>
+					<li id="classes_li"><center><button onclick="toggle_classes()">Classes</button></center></li>
+					<li id="location_li"><center><button onclick="toggle_location()">Location</button></center></li>
+					<li id="contact_us_li"><center><button onclick="toggle_contact_us()">Contact Us</button></center></li>
 				</ul>
-				
-			</div>
-			<div class="col-2"></div>
+			</nav>
 		</div>
-	</section>
+		<div class="col-2 slight-pop"></div>
+	</div>
 
 	<section id="about" name="about">
 		<div class="row">
@@ -116,8 +173,8 @@ File: index.php
 				<h3>Beginners are welcome!  Stop by for free consultation or join a group class or get a private chess lesson from one of our masters.</h3>
 				
 			</div>
-			<div class="col-4" id="about_disp">
-				
+			<div class="col-4 fill" id="about_disp">
+				<img src="img/asdfasdf.png" style="height:300px;width:300px;">
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -131,8 +188,8 @@ File: index.php
 				<hr style="margin: 20px;">
 				<button id="history_button">history of the club ></button>
 			</div>
-			<div class="col-6" id="gm_shot">
-				
+			<div class="col-6 fill" id="gm_shot">
+				<img src="img/gasdfgadsg.png" style="height:400px;">
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -141,11 +198,168 @@ File: index.php
 	<section id="schedule" name="schedule">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-4">
-				text
+			<div class="col-2" style="margin:10px;">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h3 class="panel-title">Club Hours</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
+						<ul style="list-style:none;padding-left:10px;" class="club_hours">
+							<li>Saturdays&emsp;&emsp;[10:30am - 8:30pm]</li>
+							<li>Sundays&nbsp;&nbsp;&emsp;&emsp;[11:00am - 7:00pm]</li>
+							<li>Tuesdays&nbsp;&emsp;&emsp;[7:30pm - 9:30pm]</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="col-4">
-				text
+			<div class="col-6 slight-pop" style="margin:10px;margin-bottom:0px;">
+				<ul class="nav nav-tabs nav-justified">
+					<li id="ssatlink" class="active"><a id="ssatlink_a" style="font-size:24px;" onclick="toggle_ssat()">Saturdays</a></li>
+					<li id="ssunlink" ><a id="ssunlink_a" style="font-size:24px;" onclick="toggle_ssun()">Sunday</a></li>
+					<li id="stuelink" ><a id="stuelink_a" style="font-size:24px;" onclick="toggle_stue()">Tuesday</a></li>
+				</ul>
+				<div id="ssat">
+					<div class="list-group" style="margin:0;">
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Beginner / Novice Class [10:30 - 11:30am]</h4>
+							<h5 class="list-group-item-text">This weekly class covers all the basic knowledge needed for conducting a game of chess such as: </h5>
+							<ul>
+								<li>Opening</li>
+								<li>Middlegame</li>
+								<li>Endgame Principals</li>
+								<li>Tactical Patterns</li>
+							</ul>
+							<h5 class="list-group-item-text">* exclusive for LACC members -- 1st visit FREE</h5>
+						</div>
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Saturday G/60 - 3 Round Swiss [12:00 - 6:00pm]</h4>
+							<h5 class="list-group-item-text">Weekly Open Tournament exclusively for USCF members - official USCF rules</h5>
+							<ul>
+								<li>REGISTRATION [11:30am - 12:00pm]</li>
+								<li>3 rounds of Game/60 d5</li>
+								<li>Rounds: noon, 2pm, 4pm</li>
+								<li>Entry fee $25 / LACC members $20</li>
+								<li>Prize: 1/2 cash collection, books
+							</ul>
+						</div>
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Saturday Night Blitz G/5 [6:30 - 8:30pm]</h4>
+							<h5 class="list-group-item-text">Weekly quick-rated tournament exclusively for USCF players</h5>
+							<ul>
+								<li>REGISTRATION [6:00 - 6:30pm]</li>
+								<li>AT LEAST 5 double-rounds (10 games) of Game/5 min</li>
+								<li>Rounds: starting at 6:30, every ~20 min</li>
+								<li>Entry fee $10</li>
+								<li>Prize: 1/2 cash collection
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="ssun">
+					<div class="list-group" style="margin:0;">
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Scholastic Beginner / Novice Class [12:00 - 1:00pm]</h4>
+							<h5 class="list-group-item-text">This weekly class covers all the basic knowledge needed for conducting a game of chess such as: </h5>
+							<ul>
+								<li>Opening</li>
+								<li>Middlegame</li>
+								<li>Endgame Principals</li>
+								<li>Tactical Patterns</li>
+							</ul>
+							<h5 class="list-group-item-text">* exclusive for LACC members -- 1st visit FREE</h5>
+						</div>
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Sunday G/60 - 3 Round Swiss [12:00 - 6:00pm]</h4>
+							<h5 class="list-group-item-text">Weekly Open Tournament exclusively for USCF members - official USCF rules</h5>
+							<ul>
+								<li>REGISTRATION [11:30am - 12:00pm]</li>
+								<li>3 rounds of Game/60 d5</li>
+								<li>Rounds: noon, 2pm, 4pm</li>
+								<li>Entry fee $25 / LACC members $20</li>
+								<li>Prize: 1/2 cash collection, books
+							</ul>
+						</div>
+						<div class="list-group-item sch_class">
+							<h4 class="list-group-item-heading">Sunday Chess for Juniors [1:00 - 6:00pm]</h4>
+							<h5 class="list-group-item-text">Weekly tournament exclusively for USCF members - official USCF rules</h5>
+							<ul>
+								<li>REGISTRATION [12:00 - 1:00pm]</li>
+								<li>5 rounds of Game/30</li>
+								<li>3 sections: K-1, K-3, K-6</li>
+								<li>Rounds: 1pm, asap</li>
+								<li>Entry fee $25 / LACC members $20</li>
+								<li>Prizes: TROPHIES (top 3), medals, 1/2 cash collection, books</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="stue">
+					<div class="list-group" style="margin:0;">
+						<div class="list-group-item sch_class" style="padding-bottom:10px;">
+							<h4 class="list-group-item-heading">Tuesday Night Advanced Lecture [7:30 - 9:30pm]</h4>
+							<h5 class="list-group-item-text">This weekly class, taught by UCSF Life Senior Master Mick Bighamian, will discuss one topic in great depth each month.  This is an ideal class for players who are already familiar with piece movements and basic knowledge of the Opening, Middlegame and Endgame principle; although this class is open to all LACC members.</h5>
+							<br>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h3 class="panel-title">Monthly Topics</h3>
+								</div>
+								<div class="panel-body" style="padding:5px;">
+									<table class="table table-responsive" style="margin:0;" id="club_hours_table">
+										<tr>
+											<td>JANUARY</td>
+											<td>Pawn Power</td>
+										</tr>
+										<tr>
+											<td>FEBRUARY</td>
+											<td>Openings</td>
+										</tr>
+										<tr>
+											<td>MARCH</td>
+											<td>TACTICS</td>
+										</tr>
+										<tr>
+											<td>APRIL</td>
+											<td>World Champions Classics</td>
+										</tr>
+										<tr>
+											<td>MAY</td>
+											<td>Position Evaluation &amp; Planning</td>
+										</tr>
+										<tr>
+											<td>JUNE</td>
+											<td>The 'Ultimate' Blunder</td>
+										</tr>
+										<tr>
+											<td>JULY</td>
+											<td>Art of Defense</td>
+										</tr>
+										<tr>
+											<td>AUGUST</td>
+											<td>Top 10 Openings (B&amp;W)</td>
+										</tr>
+										<tr>
+											<td>SEPTEMBER</td>
+											<td>Art of Attack</td>
+										</tr>
+										<tr>
+											<td>OCTOBER</td>
+											<td>Mid-game pawn centers</td>
+										</tr>
+										<tr>
+											<td>NOVEMBER</td>
+											<td>TACTICS</td>
+										</tr>
+										<tr>
+											<td>DECEMBER</td>
+											<td>Endings</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<h5 class="list-group-item-text">* exclusive for LACC members -- 1st visit FREE -- NO RSVP</h5>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-2"></div>
 		</div>
@@ -184,17 +398,32 @@ File: index.php
 	<section id="contact_us" name="contact_us">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-3">
-				<center><h1 style="font-size:28px;">Contact Us</h1></center>
-				<h2 style="margin:0;">Founder &amp; Director</h2>
-				<h1 style="margin:0;">Senior Master Mick Bighamian</h1>
-				<hr>
-				<h3 style="margin-left:20px;">email: <a style="color: #84a1d8;" href="mailto:mick@lachessclub.com">mick@lachessclub.com</a><br>cell: 310 795 5710</h3>
+			<div class="col-4 elbow_room">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h1 style="font-size:32px;" class="panel-title">Contact Us</h1>
+					</div>
+					<div class="panel-body" style="padding:15px;padding-bottom:0px;padding-top:0px;">
+						<h3>Founder &amp; Director</h3>
+						<h2 style="margin-top:0;">Senior Master Mick Bighamian</h2>
+						<ul>
+							<li>email: <a style="color: #84a1d8;" href="mailto:mick@lachessclub.com">mick@lachessclub.com</a></li>
+							<li>cell: 310 795 5710</li>
+						</ul>
+						<hr>
+						<h4>Anyone is welcome to stop by and meet the members! This is the easiest and most effective way to get in touch!</h4>
+						<a style="font-size:18px;" onclick="toggle_location()">Location details here!</a>
+						<br><br>
+					</div>
+				</div>
 			</div>
-			<div class="col-1"></div>
-			<div class="col-4">
-				<center><img src="img/DSC_0278.jpg" style="width:80%;margin-top:20px;"></center>
-				<center><p style="width:80%;">Mick Bighamian (left)</p></center>
+			<div class="col-4 elbow_room">
+				<div class="panel panel-default">
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
+						<center><img src="img/DSC_0278.jpg" style="width:100%;"></center>
+						<center><p style="width:80%;color:black;">Mick Bighamian (left)</p></center>
+					</div>
+				</div>
 			</div>
 			<div class="col-2"></div>
 		</div>

@@ -6,8 +6,12 @@ File: styles.css
 html,
 body {
 	margin: 0px;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/aniTxU8.jpg') center center no-repeat;
+	padding: 0px;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/aniTxU8.jpg') top center no-repeat;
+}
+body {
+	padding-bottom: 80px;
 }
 
 
@@ -37,7 +41,13 @@ body {
 [class*="col-"] {
     float: left;
     padding: 0px;
-    border: 1px solid transparent;
+	border: 1px solid transparent;
+}
+
+/*stopping the width being slightly larger than the window  */
+.row {
+	margin: 0px;
+	padding: 0px;
 }
 
 /*preventing block floating among rows*/
@@ -45,30 +55,30 @@ body {
     content: "";
     clear: both;
     display: table;
-}
+} 
 
 
 #title {
 	font-family: Andale Mono, AndaleMono, monospace;
 	margin: 10px;
-	font-size: 70px;
+	font-size: 60px;
 	color: black;
 }
 
-#nav li {
+nav li {
 	padding-right: 30px;
 	padding-left: 30px;
 	margin-left: 0px;
 	list-style: none;
 	float:left;
 }
-#nav button {
-	font-size: 28px;
+nav button {
+	font-size: 24px;
 	background: transparent;
 	border: none;
 	outline: none;
 }
-#nav button:hover {
+nav button:hover {
 	color:#FFFFFF;
 }
 .about_buttons {
@@ -92,17 +102,16 @@ body {
 	color: #84a1d8;
 }
 
-#about_disp {
-	background: url('img/asdfasdf.png');
-	background-size: 100%;
-	height: 350px;
-	background-repeat: no-repeat;
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
 }
-#gm_shot {
-	background: url('img/gasdfgadsg.png');
-	background-size: 100%;
-	background-repeat: no-repeat;
-	height: 400px;
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 #history_button {
 	color: #84a1d8;
@@ -130,4 +139,43 @@ body {
     height:80px;
     width:100%;
 	background-color: black;
+}
+
+.slight-pop {
+	height: 100%;
+	background: rgba(255,255,255,0.15);
+}
+
+#club_hours_table td {
+	color: black;
+	width: 50%;
+	margin: 0px;
+}
+
+.sch_class {
+	padding: 25px;
+	color: black;
+}
+.sch_class li {
+	color: black;
+}
+
+#ssunlink:hover a {
+	color: black;
+}
+
+.club_hours li {
+	color:black;
+}
+
+.elbow_room {
+	margin: 10px;
+}
+
+.panel-body {
+	color: black;
+}
+.panel-body ul li {
+	font-size: 16px;
+	color: black;
 }
