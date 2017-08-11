@@ -61,13 +61,13 @@ body {
 #title {
 	font-family: Andale Mono, AndaleMono, monospace;
 	margin: 10px;
-	font-size: 60px;
+	font-size: 48px;
 	color: black;
 }
 
 nav li {
-	padding-right: 30px;
-	padding-left: 30px;
+	padding-right: 15px;
+	padding-left: 15px;
 	margin-left: 0px;
 	list-style: none;
 	float:left;
@@ -178,4 +178,43 @@ nav button:hover {
 .panel-body ul li {
 	font-size: 16px;
 	color: black;
+}
+#mobiletitle {
+	display: none;
+}
+
+
+
+
+
+@media screen and (min-width:1840px) {
+	#title {
+		font-size: 60px;
+	}
+}
+
+@media screen and (max-width:1240px) {
+	#title {
+		margin-top: 20px;
+		font-size: 40px;
+	}
+}
+@media screen and (max-width:1020px) {
+	#mobiletitle {
+		display: block;
+		font-weight: bold;
+	}
+	#title {
+		display: none;
+	}
+}
+@media screen and (max-width:768px) {
+	#schedule .panel-body li {
+		/*todo  */
+	}
+}
+@media screen and (max-width:425px) {
+	#header img {
+		display:none;
+	}
 }

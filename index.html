@@ -29,25 +29,25 @@ File: index.php
 	<script type="text/javascript">
 
 	function setup() {
-		toggle_about();
+		toggle_schedule();
 		toggle_ssat();
 	}
 
 	// main nav toggle
 	function toggle_about() {
-		toggle_('about',['schedule','classes','location','contact_us']);
+		toggle_('about',['schedule','join','location','contact_us']);
 	}
 	function toggle_schedule() {
-		toggle_('schedule',['about','classes','location','contact_us']);
+		toggle_('schedule',['about','join','location','contact_us']);
 	}
-	function toggle_classes() {
-		toggle_('classes',['schedule','location','about','contact_us']);
+	function toggle_join() {
+		toggle_('join',['schedule','location','about','contact_us']);
 	}
 	function toggle_location() {
-		toggle_('location',['schedule','classes','about','contact_us']);
+		toggle_('location',['schedule','join','about','contact_us']);
 	}
 	function toggle_contact_us() {
-		toggle_('contact_us',['schedule','classes','location','about']);
+		toggle_('contact_us',['schedule','join','location','about']);
 	}
 
 	// schedule toggle
@@ -138,7 +138,8 @@ File: index.php
 				<center><img style="margin-top: 10px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";" src="img/pieces/w_Knight.png"></center>
 			</div>
 			<div class="col-6">
-				<center><h1 id="title">Los Angeles Chess Club</h1></center>
+				<center><a href="/"><h1 id="title">Los Angeles Chess Club</h1></a></center>
+				<center><a href="/"><h1 style="color:black;" id="mobiletitle">L A C C</h1></a></center>
 			</div>
 			<div class="col-1">
 				<center><img style="margin-top: 10px;" src="img/pieces/b_Knight.png"></center>
@@ -154,9 +155,9 @@ File: index.php
 				<ul class="nav nav-tabs nav-justified">
 					<li id="about_li"><center><button onclick="toggle_about()">About</button></center></li>
 					<li id="schedule_li"><center><button onclick="toggle_schedule()">Schedule</button></center></li>
-					<li id="classes_li"><center><button onclick="toggle_classes()">Classes</button></center></li>
+					<li id="join_li"><center><button onclick="toggle_join()">Join</button></center></li>
 					<li id="location_li"><center><button onclick="toggle_location()">Location</button></center></li>
-					<li id="contact_us_li"><center><button onclick="toggle_contact_us()">Contact Us</button></center></li>
+					<li id="contact_us_li"><center><button onclick="toggle_contact_us()">Contact</button></center></li>
 				</ul>
 			</nav>
 		</div>
@@ -209,6 +210,18 @@ File: index.php
 							<li>Sundays&nbsp;&nbsp;&emsp;&emsp;[11:00am - 7:00pm]</li>
 							<li>Tuesdays&nbsp;&emsp;&emsp;[7:30pm - 9:30pm]</li>
 						</ul>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h3 class="panel-title">Classes</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
+						<h4 style="padding-left:10px;">Novice Class</h4>
+						<ul style="list-style:none;padding-left:20px;" class="club_hours">
+							<li>Saturday / Sunday [12 - 1pm]</li>
+						</ul>
+						incomplete...
 					</div>
 				</div>
 			</div>
@@ -365,7 +378,7 @@ File: index.php
 		</div>
 	</section>
 
-	<section id="classes" name="classes">
+	<section id="join" name="join">
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-4">
@@ -387,6 +400,8 @@ File: index.php
 				<hr>
 				<h3>11514 Santa Monica Blvd.<br>Los Angeles, CA  90025</h3>
 				<a id="open_in_maps" href="https://www.google.com/maps/place/Los+Angeles+Chess+Club/@34.045182,-118.4520704,19z/data=!4m5!3m4!1s0x0:0x1270b0aa9041b52c!8m2!3d34.0452334!4d-118.4520605?hl=en-US">Open Map</a>
+				<hr>
+				<h2>Parking info placeholder **********************</h2>
 			</div>
 			<div class="col-6">
 				<div id="map"></div>
