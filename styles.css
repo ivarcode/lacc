@@ -181,9 +181,14 @@ nav button:hover {
 }
 #mobiletitle {
 	display: none;
+	color:black;
+	font-size:48px;
 }
 
-
+#img1, #img2 {
+	margin-top: 0px;
+	height: 60px;
+}
 
 
 
@@ -213,8 +218,21 @@ nav button:hover {
 		/*todo  */
 	}
 }
-@media screen and (max-width:425px) {
-	#header img {
+@media screen and (max-width:580px) {
+	#img1 {
 		display:none;
+	}
+}
+@media screen and (max-width:425px) {
+	#mobiletitle {
+		float: left;
+	}
+	#columnleftheader, #columnrightheader {
+		display:none;
+	}
+}
+@media screen and (max-width:356px) {
+	#mobiletitle {
+		font-size: 40px;
 	}
 }
