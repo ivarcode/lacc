@@ -29,8 +29,9 @@ File: index.php
 	<script type="text/javascript">
 
 	function setup() {
-		toggle_join();
+		toggle_schedule();
 		toggle_ssat();
+		go();
 	}
 
 	// main nav toggle
@@ -121,7 +122,6 @@ File: index.php
 		});
 	}
 
-	go();
 	window.addEventListener('resize', go);
 
 	function go() {
@@ -129,8 +129,72 @@ File: index.php
 		let height = document.documentElement.clientHeight;
 		if (width < 1020) {
 			document.getElementById('left_schedule_column').className = 'col-8';
+			document.getElementById('mobile_schedule_margin').style.display = 'none';
+			document.getElementById('mobile_join_margin').style.display = 'none';
+			document.getElementById('mobile_about_margin').style.display = 'none';	
+			document.getElementById('mobile_about_margin2').style.display = 'none';						
+			document.getElementById('mobile_contact_margin').style.display = 'none';
+			document.getElementById('mobile_loc_margin_1').style.display = 'none';
+			// let x = document.getElementsByClassName('mobile_loc_margin');
+			// for (let i = 0; i < x.length; i++) {
+			// 	x[i].style.display = 'none';
+			// }
+			document.getElementById('day_schedule').className = 'col-8';
+			document.getElementById('contact_mick').className = 'col-8 elbow_room';
+			document.getElementById('mick_pic').className = 'col-8 elbow_room';
+			document.getElementById('loc_info').className = 'col-8';
+			document.getElementById('loc_map').className = 'col-8';
+			document.getElementById('about_main').className = 'col-8';
+			document.getElementById('about_img_1').className = 'col-8';
+			document.getElementById('about_info_2').className = 'col-8';
+			document.getElementById('gm_shot').className = 'col-8';
+			document.getElementById('join_details').className = 'col-8 elbow_room';
+			document.getElementById('uscf_cat').className = 'col-8 elbow_room';
+			if (width < 440) {
+				let margin_cols = document.getElementsByClassName('margin_col');
+				for (let i = 0; i < margin_cols.length; i++) {
+					margin_cols[i].style.visibility = 'hidden';
+				}
+				document.getElementById('left_schedule_column').className = 'col-11';
+				document.getElementById('day_schedule').className = 'col-11';
+				document.getElementById('contact_mick').className = 'col-11 elbow_room';
+				document.getElementById('mick_pic').className = 'col-11 elbow_room';
+				document.getElementById('join_details').className = 'col-11 elbow_room';
+				document.getElementById('uscf_cat').className = 'col-11 elbow_room';
+				document.getElementById('loc_info').className = 'col-11';
+				document.getElementById('loc_map').className = 'col-11';
+				document.getElementById('about_main').className = 'col-11';
+				document.getElementById('about_img_1').className = 'col-11';
+				document.getElementById('about_info_2').className = 'col-11';
+				document.getElementById('gm_shot').className = 'col-11';
+			} else {
+				let margin_cols = document.getElementsByClassName('margin_col');
+				for (let i = 0; i < margin_cols.length; i++) {
+					margin_cols[i].style.visibility = 'visible';
+				}
+			}
 		} else {
 			document.getElementById('left_schedule_column').className = 'col-3';
+			document.getElementById('mobile_schedule_margin').style.display = 'block';
+			document.getElementById('mobile_about_margin').style.display = 'block';		
+			document.getElementById('mobile_about_margin2').style.display = 'block';	
+			document.getElementById('mobile_join_margin').style.display = 'block';
+			let x = document.getElementsByClassName('mobile_loc_margin');
+			for (let i = 0; i < x.length; i++) {
+				x[i].style.display = 'block';
+			}
+			document.getElementById('mobile_contact_margin').style.display = 'block';
+			document.getElementById('day_schedule').className = 'col-5';
+			document.getElementById('contact_mick').className = 'col-4 elbow_room';
+			document.getElementById('mick_pic').className = 'col-4 elbow_room';
+			document.getElementById('join_details').className = 'col-5 elbow_room';
+			document.getElementById('uscf_cat').className = 'col-3 elbow_room';
+			document.getElementById('loc_info').className = 'col-2';
+			document.getElementById('loc_map').className = 'col-6';
+			document.getElementById('about_main').className = 'col-4';
+			document.getElementById('about_img_1').className = 'col-4 fill';
+			document.getElementById('about_info_2').className = 'col-2';
+			document.getElementById('gm_shot').className = 'col-6 fill';
 		}
 	}
 
@@ -178,22 +242,24 @@ File: index.php
 
 	<section id="about" name="about">
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-4" id="summary_text">
+			<div class="col-2 margin_col"></div>
+			<div id="about_main" class="col-4" id="summary_text" style="margin-left:10px;">
 				<center><h1 style="font-size: 32px;">About Us</h1></center>
 				<h3>The Los Angeles Chess Club (LACC) is one of the the most active chess clubs in the USA and hosts the strongest weekly tournament (LA Masters).</h3><h3>Operating on the premises of the Barrington Bridge Club</button>, LACC conducts weekly lectures and tournaments.</h3>
 				<hr>
 				<h3>Beginners are welcome!  Stop by for free consultation or join a group class or get a private chess lesson from one of our masters.</h3>
 				
 			</div>
-			<div class="col-4 fill" id="about_disp">
-				<img src="img/asdfasdf.png" style="height:300px;width:300px;">
+			<div id="mobile_about_margin" class="col-2 margin_col"></div>
+			<div id="mobile_about_margin" class="col-2 margin_col"></div>
+			<div id="about_img_1" class="col-4 fill" id="about_disp">
+				<center><img src="img/asdfasdf.png" style="max-width:100%;"></center>
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 		</div>
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-2">
+			<div class="col-2 margin_col"></div>
+			<div id="about_info_2" class="col-2">
 				<button class="about_buttons">Club Schedule</button>
 				<center><h3 style="margin:0px;">lectures / tournaments</h3></center>
 				<button class="about_buttons">Group Classes &amp;<br>Private Lessons</button>
@@ -201,16 +267,18 @@ File: index.php
 				<!-- <hr style="margin: 20px;">
 				<button id="history_button">history of the club ></button>  -->
 			</div>
+			<div id="mobile_about_margin2" class="col-2 margin_col"></div>
+			<div id="mobile_about_margin2" class="col-2 margin_col"></div>
 			<div class="col-6 fill" id="gm_shot">
-				<img src="img/gasdfgadsg.png" style="height:400px;">
+				<center><img src="img/gasdfgadsg.png" style="max-width:100%;"></center>
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 		</div>
 	</section>
 
 	<section id="schedule" name="schedule">
 		<div class="row">
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 			<div id="left_schedule_column" class="col-3" style="margin:10px;">
 				<div class="panel panel-default">
 					<div class="panel-heading" style="background:#333333;color:white;">
@@ -239,7 +307,9 @@ File: index.php
 					</div>
 				</div>
 			</div>
-			<div class="col-5 slight-pop" style="margin:10px;margin-bottom:0px;">
+			<div id="mobile_schedule_margin" class="col-2 margin_col"></div>
+			<div id="mobile_schedule_margin" class="col-2 margin_col"></div>
+			<div id="day_schedule" class="col-5 slight-pop" style="margin:10px;margin-bottom:0px;">
 				<ul class="nav nav-tabs nav-justified">
 					<li id="ssatlink" class="active"><a id="ssatlink_a" style="font-size:24px;" onclick="toggle_ssat()">Saturday</a></li>
 					<li id="ssunlink" ><a id="ssunlink_a" style="font-size:24px;" onclick="toggle_ssun()">Sunday</a></li>
@@ -388,15 +458,46 @@ File: index.php
 					</div>
 				</div>
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 		</div>
 	</section>
 
 	<section id="join" name="join">
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-3">
-
+			<div class="col-2 margin_col"></div>
+			<div id="join_details" class="col-5 elbow_room">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h3 class="panel-title">Join the LA Chess Club TODAY</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;margin-left:10px;">
+						<h4><a href="assets/LACC-Membership-Form-2016-06.doc" download>Download the LACC Application Form</a></h4>
+						<h4>Please fill out and mail or email the application above, or stop by to join today!</h4>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h3 class="panel-title">LACC Membership Benefits</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
+						<ul style="padding-left:20px;" class="club_hours">
+							<li>FREE attendance to any and all 3 weekly classes</li>
+							<li>FREE visitation rights ($10 per visit for non-tournament, non-LACC members)</li>
+							<li>FREE casual chess!</li>
+							<li>FREE first tournament with annual Membership</li>
+							<li>Right to borrow chess books and videos from the library</li>
+							<li>Discount on EFs and equipment purchases</li>
+							<li>Q&amp;A in person or via text/email</li>
+							<li>Play in 10 tournaments and the 11th is free!</li>
+							<li>Play for FREE on your birthday!</li>
+							<li>Renew USCF at discounted rate</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="mobile_join_margin" class="col-2 margin_col"></div>
+			<div id="mobile_join_margin" class="col-2 margin_col"></div>
+			<div id="uscf_cat" class="col-3 elbow_room">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">US Chess Federation Catergories</h3>
@@ -462,56 +563,37 @@ File: index.php
 						</table>
 					</div>
 				</div>
-			</div>
-			<div class="col-4">
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background:#333333;color:white;">
-						<h3 class="panel-title">LACC Membership Benefits</h3>
-					</div>
-					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
-						<ul style="padding-left:20px;" class="club_hours">
-							<li>FREE attendance to any and all 3 weekly classes</li>
-							<li>FREE visitation rights ($10 per visit for non-tournament, non-LACC members)</li>
-							<li>FREE casual chess!</li>
-							<li>FREE first tournament with annual Membership</li>
-							<li>Right to borrow chess books and videos from the library</li>
-							<li>Discount on EFs and equipment purchases</li>
-							<li>Q&amp;A in person or via text/email</li>
-							<li>Play in 10 tournaments and the 11th is free!</li>
-							<li>Play for FREE on your birthday!</li>
-							<li>Renew USCF at discounted rate</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-2"></div>
+			</div>			
+			<div class="col-2 margin_col"></div>
 		</div>
 	</section>
 
 	<section id="location" name="location">
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-2">
+			<div class="col-2 margin_col"></div>
+			<div id="loc_info" class="col-2" style="margin-left:10px;">
 				<br>
 				<h1 style="font-size:28px;">Where We Are</h1>
 				<hr>
 				<h3>11514 Santa Monica Blvd.<br>Los Angeles, CA  90025</h3>
 				<a id="open_in_maps" href="https://www.google.com/maps/place/Los+Angeles+Chess+Club/@34.045182,-118.4520704,19z/data=!4m5!3m4!1s0x0:0x1270b0aa9041b52c!8m2!3d34.0452334!4d-118.4520605?hl=en-US">Open Map</a>
 				<hr>
-				<h2>Parking info placeholder **********************</h2>
+				<h3>Free basement parking accessible from alley by the pharmacy</h3>
+				<!-- <h2>Free Sunday parking in the Bank of America lot</h2> -->
 			</div>
-			<div class="col-6">
+			<div id="mobile_loc_margin_1" class="col-2 margin_col mobile_loc_margin"></div>
+			<div class="col-2 margin_col mobile_loc_margin"></div>
+			<div id="loc_map" class="col-6">
 				<div id="map"></div>
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 		</div>
 	</section>
 
 	<section id="contact_us" name="contact_us">
 		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-4 elbow_room">
+			<div class="col-2 margin_col"></div>
+			<div id="contact_mick" class="col-4 elbow_room">
 				<div class="panel panel-default">
 					<div class="panel-heading" style="background:#333333;color:white;">
 						<h1 style="font-size:32px;" class="panel-title">Contact Us</h1>
@@ -530,7 +612,9 @@ File: index.php
 					</div>
 				</div>
 			</div>
-			<div class="col-4 elbow_room">
+			<div id="mobile_contact_margin" class="col-2 margin_col"></div>
+			<div id="mobile_contact_margin" class="col-2 margin_col"></div>
+			<div id="mick_pic" class="col-4 elbow_room">
 				<div class="panel panel-default">
 					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
 						<center><img src="img/DSC_0278.jpg" style="width:100%;"></center>
@@ -538,19 +622,16 @@ File: index.php
 					</div>
 				</div>
 			</div>
-			<div class="col-2"></div>
+			<div class="col-2 margin_col"></div>
 		</div>
 	</section>
 
 	<section id="footer" name="footer">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-4">
+			<div class="col-8">
 				<p style="font-size:12px;margin-top: 15px;margin-bottom: 10px;">Copyright &copy; 2017 LACC</p>
 				<p style="font-size:10px;margin-top: 8px;">coded by <a style="color:#48a9f9;" href="http://ivarcode.net/">Camden I. Wagner</a></p>
-			</div>
-			<div class="col-4">
-				
 			</div>
 			<div class="col-2"></div>
 		</div>
