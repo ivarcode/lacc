@@ -61,8 +61,11 @@ body {
 #title {
 	font-family: Andale Mono, AndaleMono, monospace;
 	margin: 10px;
-	font-size: 48px;
+	font-size: 44px;
 	color: black;
+}
+.no_hover {
+	text-decoration: none;
 }
 
 nav li {
@@ -151,6 +154,9 @@ nav button:hover {
 	width: 50%;
 	margin: 0px;
 }
+#USCFtable td, th{
+	color:black;
+}
 
 .sch_class {
 	padding: 25px;
@@ -194,14 +200,14 @@ nav button:hover {
 
 @media screen and (min-width:1840px) {
 	#title {
-		font-size: 60px;
+		font-size: 44px;
 	}
 }
 
 @media screen and (max-width:1240px) {
 	#title {
 		margin-top: 20px;
-		font-size: 40px;
+		font-size: 36px;
 	}
 }
 @media screen and (max-width:1020px) {
@@ -212,11 +218,8 @@ nav button:hover {
 	#title {
 		display: none;
 	}
-}
-@media screen and (max-width:768px) {
-	#schedule .panel-body li {
-		/*todo  */
-	}
+	
+
 }
 @media screen and (max-width:580px) {
 	#img1 {

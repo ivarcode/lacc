@@ -29,7 +29,7 @@ File: index.php
 	<script type="text/javascript">
 
 	function setup() {
-		toggle_schedule();
+		toggle_join();
 		toggle_ssat();
 	}
 
@@ -121,6 +121,18 @@ File: index.php
 		});
 	}
 
+	go();
+	window.addEventListener('resize', go);
+
+	function go() {
+		let width = document.documentElement.clientWidth;
+		let height = document.documentElement.clientHeight;
+		if (width < 1020) {
+			document.getElementById('left_schedule_column').className = 'col-8';
+		} else {
+			document.getElementById('left_schedule_column').className = 'col-3';
+		}
+	}
 
 	window.addEventListener('load', setup, false);
 	
@@ -138,8 +150,8 @@ File: index.php
 				<center><img id="img1" style="margin-top: 10px;-moz-transform: scaleX(-1);-o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter: "FlipH";" src="img/pieces/w_Knight.png"></center>
 			</div>
 			<div class="col-6">
-				<center><a href="/"><h1 id="title">Los Angeles Chess Club</h1></a></center>
-				<center><a href="/"><h1 id="mobiletitle">L A C C</h1></a></center>
+				<center><a class="no_hover" href="/"><h1 id="title">Los Angeles Chess Club</h1></a></center>
+				<center><a class="no_hover" href="/"><h1 id="mobiletitle">L A C C</h1></a></center>
 			</div>
 			<div class="col-1">
 				<center><img id="img2" style="margin-top: 10px;" src="img/pieces/b_Knight.png"></center>
@@ -185,9 +197,9 @@ File: index.php
 				<button class="about_buttons">Club Schedule</button>
 				<center><h3 style="margin:0px;">lectures / tournaments</h3></center>
 				<button class="about_buttons">Group Classes &amp;<br>Private Lessons</button>
-				<button class="about_buttons">Location</button>
-				<hr style="margin: 20px;">
-				<button id="history_button">history of the club ></button>
+				 <button class="about_buttons">Location</button>
+				<!-- <hr style="margin: 20px;">
+				<button id="history_button">history of the club ></button>  -->
 			</div>
 			<div class="col-6 fill" id="gm_shot">
 				<img src="img/gasdfgadsg.png" style="height:400px;">
@@ -199,7 +211,7 @@ File: index.php
 	<section id="schedule" name="schedule">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-2" style="margin:10px;">
+			<div id="left_schedule_column" class="col-3" style="margin:10px;">
 				<div class="panel panel-default">
 					<div class="panel-heading" style="background:#333333;color:white;">
 						<h3 class="panel-title">Club Hours</h3>
@@ -214,18 +226,20 @@ File: index.php
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading" style="background:#333333;color:white;">
-						<h3 class="panel-title">Classes</h3>
+						<h3 class="panel-title">Private Lessons</h3>
 					</div>
 					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
-						<h4 style="padding-left:10px;">Novice Class</h4>
-						<ul style="list-style:none;padding-left:20px;" class="club_hours">
-							<li>Saturday / Sunday [12 - 1pm]</li>
+						<h4 style="padding-left:10px;">Private 1-on-1 chess lessons</h4>
+						<ul style="padding-left:20px;" class="club_hours">
+							<li>by Life Senior Master Mick Bighamian &amp; other club masters and experts</li>
+							<li>Hourly rate $79 ($89 offsite)</li>
+							<li>5-hour package $395 ($445 offsite)</li>
+							<li>10-hour package $745 ($795 offsite)</li>
 						</ul>
-						incomplete...
 					</div>
 				</div>
 			</div>
-			<div class="col-6 slight-pop" style="margin:10px;margin-bottom:0px;">
+			<div class="col-5 slight-pop" style="margin:10px;margin-bottom:0px;">
 				<ul class="nav nav-tabs nav-justified">
 					<li id="ssatlink" class="active"><a id="ssatlink_a" style="font-size:24px;" onclick="toggle_ssat()">Saturday</a></li>
 					<li id="ssunlink" ><a id="ssunlink_a" style="font-size:24px;" onclick="toggle_ssun()">Sunday</a></li>
@@ -381,12 +395,96 @@ File: index.php
 	<section id="join" name="join">
 		<div class="row">
 			<div class="col-2"></div>
-			<div class="col-4">
-				text
+			<div class="col-3">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">US Chess Federation Catergories</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;">
+						<table class="table table-responsive" style="margin:0;" id="USCFtable">
+							<tr>
+								<th>Catergory</th>
+								<th>Rating Range</th>
+							</tr>
+							<tr>
+								<td>Senior Master</td>
+								<td>2400+</td>
+							</tr>
+							<tr>
+								<td>Master</td>
+								<td>2200-2399</td>
+							</tr>
+							<tr>
+								<td>Expert</td>
+								<td>2000-2199</td>
+							</tr>
+							<tr>
+								<td>Class A</td>
+								<td>1800-1999</td>
+							</tr>
+							<tr>
+								<td>Class B</td>
+								<td>1600-1799</td>
+							</tr>
+							<tr>
+								<td>Class C</td>
+								<td>1400-1599</td>
+							</tr>
+							<tr>
+								<td>Class D</td>
+								<td>1200-1399</td>
+							</tr>
+							<tr>
+								<td>Class E</td>
+								<td>1000-1199</td>
+							</tr>
+							<tr>
+								<td>Class F</td>
+								<td>800-999</td>
+							</tr>
+							<tr>
+								<td>Class G</td>
+								<td>600-799</td>
+							</tr>
+							<tr>
+								<td>Class H</td>
+								<td>400-599</td>
+							</tr>
+							<tr>
+								<td>Class I</td>
+								<td>200-399</td>
+							</tr>
+							<tr>
+								<td>Class J</td>
+								<td>U200</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 			<div class="col-4">
-				text
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background:#333333;color:white;">
+						<h3 class="panel-title">LACC Membership Benefits</h3>
+					</div>
+					<div class="panel-body" style="padding:5px;padding-bottom:0px;">
+						<ul style="padding-left:20px;" class="club_hours">
+							<li>FREE attendance to any and all 3 weekly classes</li>
+							<li>FREE visitation rights ($10 per visit for non-tournament, non-LACC members)</li>
+							<li>FREE casual chess!</li>
+							<li>FREE first tournament with annual Membership</li>
+							<li>Right to borrow chess books and videos from the library</li>
+							<li>Discount on EFs and equipment purchases</li>
+							<li>Q&amp;A in person or via text/email</li>
+							<li>Play in 10 tournaments and the 11th is free!</li>
+							<li>Play for FREE on your birthday!</li>
+							<li>Renew USCF at discounted rate</li>
+						</ul>
+					</div>
+				</div>
 			</div>
+			
 			<div class="col-2"></div>
 		</div>
 	</section>
